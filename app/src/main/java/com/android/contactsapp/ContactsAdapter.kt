@@ -44,6 +44,7 @@ class ContactsAdapter(var list: ArrayList<Contact>, var context: Context) :
     }
 
     fun updateList(arrayList: ArrayList<Contact>) {
+        clearList()
         list.addAll(arrayList)
         notifyDataSetChanged()
     }

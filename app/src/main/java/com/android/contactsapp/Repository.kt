@@ -12,8 +12,13 @@ class Repository {
         return networkService.getContacts()
     }
 
-    fun postContact(contact: Contact): Single<JsonObject> {
-        return networkService.saveContact(contact.firstname, contact.lastname, contact.email, contact.phone)
+    fun postContact(contact: Contact): Single<String> {
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("firstName", contact.firstname)
+        jsonObject.addProperty("lastName", contact.lastname)
+        jsonObject.addProperty("email", contact.email)
+        jsonObject.addProperty("phone", contact.phone)
+        return networkService.saveContact(jsonObject)
     }
 
 }
